@@ -1,0 +1,7 @@
+.link{
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    display: flex;
+    flex-direction: column;
+}

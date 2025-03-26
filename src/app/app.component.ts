@@ -12,8 +12,15 @@ import {Router } from '@angular/router';
 export class AppComponent {
 
   title = 'Fork Yah!!!';
+
   displayRestaurant() {
     this.router.navigate(['/list-restaurants']);  }
+
+  displayFullMenu() {
+    this.router.navigate(['/list-foods']);
+  }
+
+
 
   constructor(private router: Router, private http: HttpClient) {}
 
