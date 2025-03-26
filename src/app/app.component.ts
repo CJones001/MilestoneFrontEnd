@@ -11,9 +11,9 @@ import {Router } from '@angular/router';
 })
 export class AppComponent {
 
-  title = 'MilestoneFrontEnd';
+  title = 'Fork Yah!!!';
   displayRestaurant() {
-    this.router.navigate(['/display-restaurant']);  }
+    this.router.navigate(['/list-restaurants']);  }
 
   constructor(private router: Router, private http: HttpClient) {}
 
