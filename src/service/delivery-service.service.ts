@@ -21,6 +21,13 @@ export class DeliveryServiceService {
     });
   }
 
+  public getRestaurant(id: number, callback: (restaurant: Restaurant) => void): void {
+    this.http.get<Restaurant>(this.host + "/restaurants/" + id).
+    subscribe((restaurant: Restaurant) => {
+      callback(restaurant);
+    });
+  }
+
   public getRestaurantMenu(id: number, callback: (foods: Food[]) => void): void {
     this.http.get<Food[]>(this.host + "/restaurants/" + id + "menu").
     subscribe((foods: Food[]) => {
