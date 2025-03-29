@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Restaurant } from '../models/restaurant.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,11 +7,13 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-edit-restaurant',
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, EditRestaurantComponent],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule],
   templateUrl: './edit-restaurant.component.html',
   styleUrl: './edit-restaurant.component.css'
 })
 export class EditRestaurantComponent {
+
+  @Input() restaurant: Restaurant | any;
 
   editForm!: FormGroup;
   restaurantId!: number;
@@ -21,15 +23,22 @@ export class EditRestaurantComponent {
     private service: DeliveryServiceService,
     private router: Router,
     private route: ActivatedRoute) {
-    this.editForm = this.formBuilder.group({
-      restaurantName: [''],
-      restaurantLocation: [''],
-      restaurantRating: [''],
-      restaurantType: ['']
-    });
-  }
+      this.editForm = this.formBuilder.group({
+        restaurantName: [''],
+        restaurantLocation: [''],
+        restaurantRating: [''],
+        restaurantType: ['']
+      });
+    }
+
+
 
   ngOnInit(): void {
+
+    this.service.getRestaurant(this.restaurantId, (restaurant: Restaurant) => {
+      this.restaurant = restaurant;
+    });
+
     this.restaurantId = Number(this.route.snapshot.paramMap.get('id'));
 
     this.service.getRestaurant(this.restaurantId, (restaurant: Restaurant) => {
