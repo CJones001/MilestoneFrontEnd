@@ -9,12 +9,10 @@ import { CommonModule } from '@angular/common';
   selector: 'app-edit-restaurant',
   imports: [FormsModule, CommonModule, ReactiveFormsModule],
   templateUrl: './edit-restaurant.component.html',
-  styleUrl: './edit-restaurant.component.css'
+  styleUrls: ['./edit-restaurant.component.css']
 })
 export class EditRestaurantComponent {
-
-  @Input() restaurant: Restaurant | any;
-
+  @Input() restaurant: Restaurant | undefined;
   editForm!: FormGroup;
   restaurantId!: number;
 
@@ -22,26 +20,14 @@ export class EditRestaurantComponent {
     private formBuilder: FormBuilder,
     private service: DeliveryServiceService,
     private router: Router,
-    private route: ActivatedRoute) {
-      this.editForm = this.formBuilder.group({
-        restaurantName: [''],
-        restaurantLocation: [''],
-        restaurantRating: [''],
-        restaurantType: ['']
-      });
-    }
-
-
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-
-    this.service.getRestaurant(this.restaurantId, (restaurant: Restaurant) => {
-      this.restaurant = restaurant;
-    });
-
     this.restaurantId = Number(this.route.snapshot.paramMap.get('id'));
 
     this.service.getRestaurant(this.restaurantId, (restaurant: Restaurant) => {
+      this.restaurant = restaurant;
       this.editForm = this.formBuilder.group({
         name: [restaurant.name, Validators.required],
         location: [restaurant.location, Validators.required],
@@ -52,21 +38,20 @@ export class EditRestaurantComponent {
   }
 
   displayRestaurant() {
-    this.router.navigate(['/list-restaurants']);  }
+    this.router.navigate(['/list-restaurants']);
+  }
 
-    onSubmit(): void {
-      if (this.editForm.valid) {
-        const updatedRestaurant: Restaurant = {
-          ...this.editForm.value,
-          id: this.restaurantId
-        };
+  onSubmit(): void {
+    if (this.editForm.valid) {
+      const updatedRestaurant: Restaurant = {
+        ...this.editForm.value,
+        id: this.restaurantId
+      };
 
-        this.service.updateRestaurant(updatedRestaurant, () => {
-          alert('Restaurant updated successfully!');
-          this.router.navigate(['/restaurants']);
-        });
-      }
+      this.service.updateRestaurant(updatedRestaurant, () => {
+        alert('Restaurant updated successfully!');
+        this.router.navigate(['/restaurants']);
+      });
     }
-
-
+  }
 }

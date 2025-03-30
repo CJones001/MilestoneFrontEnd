@@ -5,7 +5,7 @@
     <!-- Restaurant Name -->
     <div class="form-group">
       <label for="name">Restaurant Name</label>
-      <input id="name" class="form-control" type="text" />
+      <input id="name" class="form-control" type="text" [placeholder]="restaurant?.name"/>
       <div *ngIf="editForm.get('name')?.invalid && editForm.get('name')?.touched" class="text-danger">
         Name is required.
       </div>
@@ -14,7 +14,7 @@
     <!-- Location -->
     <div class="form-group">
       <label for="location">Location</label>
-      <input id="location" class="form-control" type="text" />
+      <input id="location" class="form-control" type="text" [placeholder]="restaurant?.location"/>
       <div *ngIf="editForm.get('location')?.invalid && editForm.get('location')?.touched" class="text-danger">
         Location is required.
       </div>
@@ -23,7 +23,7 @@
     <!-- Category -->
     <div class="form-group">
       <label for="category">Category</label>
-      <input id="category" class="form-control" type="text" />
+      <input id="category" class="form-control" type="text" [placeholder]="restaurant?.category" />
       <div *ngIf="editForm.get('category')?.invalid && editForm.get('category')?.touched" class="text-danger">
         Category is required.
       </div>
@@ -32,7 +32,7 @@
     <!-- Average Wait Time -->
     <div class="form-group">
       <label for="avgWaitTime">Average Wait Time (in minutes)</label>
-      <input id="avgWaitTime" class="form-control" type="number" />
+      <input id="avgWaitTime" class="form-control" type="number" [placeholder]="restaurant?.avgWaitTime"/>
       <div *ngIf="editForm.get('avgWaitTime')?.invalid && editForm.get('avgWaitTime')?.touched" class="text-danger">
         Please enter a valid wait time (minimum 0).
       </div>
