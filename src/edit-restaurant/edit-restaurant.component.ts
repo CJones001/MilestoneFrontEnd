@@ -50,7 +50,7 @@ export class EditRestaurantComponent {
 
       this.service.updateRestaurant(updatedRestaurant, () => {
         alert('Restaurant updated successfully!');
-        this.router.navigate(['/restaurants']);
+        this.router.navigate(['/list-restaurants']);
       });
     }
   }

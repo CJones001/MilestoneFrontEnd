@@ -1,1 +1,20 @@
-<p>list-foods works!</p>
+<div class="list-group" *ngIf="selectedRestaurant == null">
+  <table align="center" class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Restaurant</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let food of foods">
+        <td>{{ food.name }}</td>
+        <td>{{ food.price }}</td>
+        <td><a (click)="goToRestaurant(food.restaurantId)">Restaurant</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-display-restaurant *ngIf="selectedRestaurant" [restaurant]="selectedRestaurant"></app-display-restaurant>

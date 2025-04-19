@@ -17,4 +17,4 @@ export const routes: Routes = [
   {path: 'delete-restaurant/:id', component: DeleteRestaurantComponent},
 ];
 
-export class ApComponent{}
+export class AppComponent{}
