@@ -7,12 +7,13 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-list-restaurants',
+  standalone: true,
   imports: [RouterModule, CommonModule, DisplayRestaurantComponent],
   templateUrl: './list-restaurants.component.html',
   styleUrl: './list-restaurants.component.css'
 })
 export class ListRestaurantsComponent {
-    @Input() restaurant: Restaurant | any;
+    // @Input() restaurant: Restaurant | any;
     restaurants: Restaurant[] | undefined;
     private service!: DeliveryServiceService;
 
@@ -27,8 +28,10 @@ export class ListRestaurantsComponent {
 
     selectedRestaurant: Restaurant | null = null;
 
-    public onSelectRestaurant(restaurant: Restaurant){
+    public onSelectRestaurant(restaurant: Restaurant) {
+      console.log("Selected restaurant:", restaurant);
       this.selectedRestaurant = restaurant;
     }
+
 }
 

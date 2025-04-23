@@ -1,6 +1,5 @@
-
-<div align="center">
-  <div class="card mb-6" style="max-width: 40%;">
+<div align="center" >
+  <div class="card mb-6" style="max-width: 40%;" >
     <div class="row no-gutters">
         <div class="card-body">
           <h5 class="card-title">{{ restaurant.name }}</h5>
@@ -9,10 +8,11 @@
           <table>
             <tr>
               <td width="30%" align="center" >
-                <a class="link" [routerLink]="['/edit-restaurant', restaurant.id]">Edit<i class="fa fa-edit"></i></a>
+                <a class="link"  (click)="editRestaurant(restaurant.id)">Edit<i class="fa fa-edit"></i></a>
               </td>
               <td width="30%" align="center">
-                <a class="link" [routerLink]="['/delete', restaurant.id]">Delete<i class="fa fa-trash"></i></a>
+                <!-- Inline Delete Component -->
+                <app-delete-restaurant [restaurantId]="restaurant.id"></app-delete-restaurant>
               </td>
               <td width="30%" align="center">
                 <a class="link" [routerLink]="['/list-foods', restaurant.id]">Menu<i class="fa fa-trash"></i></a>
@@ -22,5 +22,3 @@
       </div>
     </div>
   </div>
-
-  <app-edit-restaurant *ngIf="selectedRestaurant" [restaurant]="selectedRestaurant" ></app-edit-restaurant>

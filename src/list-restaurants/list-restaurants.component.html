@@ -1,14 +1,5 @@
-
-<div class="list-group" *ngIf="selectedRestaurant == null">
-  <button class="list-group-item active"
-    *ngFor="let restaurant of restaurants"
-    (click)="onSelectRestaurant(restaurant)">
-    <table align="center">
-      <tr>
-        <td>{{ restaurant.name }} from {{ restaurant.category }}</td>
-      </tr>
-    </table>
-  </button>
+<div class="card-container">
+  <div class="restaurant-card" *ngFor="let restaurant of restaurants">
+    <app-display-restaurant [restaurant]="restaurant"></app-display-restaurant>
+  </div>
 </div>
-
-<app-display-restaurant *ngIf="selectedRestaurant" [restaurant]="selectedRestaurant"></app-display-restaurant>

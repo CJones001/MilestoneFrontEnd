@@ -17,6 +17,8 @@ export class DeliveryServiceService {
   public getRestaurants(callback: (restaurants: Restaurant[]) => void): void {
     this.http.get<Restaurant[]>(this.host + "/restaurants").
     subscribe((restaurants: Restaurant[]) => {
+      console.log("Fetched restaurants:", restaurants);
+
       callback(restaurants);
     });
   }
@@ -24,6 +26,7 @@ export class DeliveryServiceService {
   public getRestaurant(id: number, callback: (restaurant: Restaurant) => void): void {
     this.http.get<Restaurant>(this.host + "/restaurants/" + id).
     subscribe((restaurant: Restaurant) => {
+
       callback(restaurant);
     });
   }
@@ -65,6 +68,13 @@ export class DeliveryServiceService {
 
   public getFullMenu(callback: (foods: Food[]) => void): void {
     this.http.get<Food[]>(this.host + "/restaurants/foods").
+    subscribe((foods: Food[]) => {
+      callback(foods);
+    });
+  }
+
+  public getMenu(id: number, callback: (foods: Food[]) => void): void {
+    this.http.get<Food[]>(this.host + "/restaurants/" + id + "/menu").
     subscribe((foods: Food[]) => {
       callback(foods);
     });

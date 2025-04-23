@@ -1,45 +1,40 @@
-<div class="container">
+<div class="container mt-4">
   <h2>Edit Restaurant</h2>
 
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-    <!-- Restaurant Name -->
+  <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Restaurant Name</label>
-      <input id="name" class="form-control" type="text" [placeholder]="restaurant?.name"/>
+      <input id="name" type="text" formControlName="name" class="form-control">
       <div *ngIf="editForm.get('name')?.invalid && editForm.get('name')?.touched" class="text-danger">
         Name is required.
       </div>
     </div>
 
-    <!-- Location -->
     <div class="form-group">
       <label for="location">Location</label>
-      <input id="location" class="form-control" type="text" [placeholder]="restaurant?.location"/>
+      <input id="location" type="text" formControlName="location" class="form-control">
       <div *ngIf="editForm.get('location')?.invalid && editForm.get('location')?.touched" class="text-danger">
         Location is required.
       </div>
     </div>
 
-    <!-- Category -->
     <div class="form-group">
       <label for="category">Category</label>
-      <input id="category" class="form-control" type="text" [placeholder]="restaurant?.category" />
+      <input id="category" type="text" formControlName="category" class="form-control">
       <div *ngIf="editForm.get('category')?.invalid && editForm.get('category')?.touched" class="text-danger">
         Category is required.
       </div>
     </div>
 
-    <!-- Average Wait Time -->
     <div class="form-group">
       <label for="avgWaitTime">Average Wait Time (in minutes)</label>
-      <input id="avgWaitTime" class="form-control" type="number" [placeholder]="restaurant?.avgWaitTime"/>
+      <input id="avgWaitTime" type="number" formControlName="avgWaitTime" class="form-control">
       <div *ngIf="editForm.get('avgWaitTime')?.invalid && editForm.get('avgWaitTime')?.touched" class="text-danger">
-        Please enter a valid wait time (minimum 0).
+        Please enter a non-negative wait time.
       </div>
     </div>
 
-    <!-- Submit Button -->
-    <button class="btn btn-primary" type="submit" [disabled]="editForm.invalid">Save Changes</button>
-    <button class="btn btn-secondary" type="button" (click)="displayRestaurant()">Cancel</button>
+    <button type="submit" (click)="onSubmit()">Save Changes</button>
+    <!-- <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button> -->
   </form>
 </div>

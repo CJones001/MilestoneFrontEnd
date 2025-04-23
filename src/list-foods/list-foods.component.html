@@ -1,4 +1,4 @@
-<div class="list-group" *ngIf="selectedRestaurant == null">
+<div class="list-group">
   <table align="center" class="table">
     <thead>
       <tr>
@@ -11,10 +11,10 @@
       <tr *ngFor="let food of foods">
         <td>{{ food.name }}</td>
         <td>{{ food.price }}</td>
-        <td><a (click)="goToRestaurant(food.restaurantId)">Restaurant</a></td>
+        <!-- Use the restaurantId to get the restaurant name from the restaurantNames object -->
+        <td>{{ restaurantNames[food.restaurantId] }}</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<app-display-restaurant *ngIf="selectedRestaurant" [restaurant]="selectedRestaurant"></app-display-restaurant>

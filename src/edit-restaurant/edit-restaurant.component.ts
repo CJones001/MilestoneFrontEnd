@@ -24,9 +24,17 @@ export class EditRestaurantComponent {
   ) {}
 
   ngOnInit(): void {
-    this.restaurantId = Number(this.route.snapshot.paramMap.get('id'));
+    const idParam = this.route.snapshot.paramMap.get('id');
+    const id = Number(idParam);
 
-    this.service.getRestaurant(this.restaurantId, (restaurant: Restaurant) => {
+    if (isNaN(id)) {
+      console.error('Invalid ID');
+      return;
+    }
+
+    this.restaurantId = id;
+
+    this.service.getRestaurant(id, (restaurant: Restaurant) => {
       this.restaurant = restaurant;
       this.editForm = this.formBuilder.group({
         name: [restaurant.name, Validators.required],
@@ -36,6 +44,8 @@ export class EditRestaurantComponent {
       });
     });
   }
+
+
 
   displayRestaurant() {
     this.router.navigate(['/list-restaurants']);
@@ -49,7 +59,6 @@ export class EditRestaurantComponent {
       };
 
       this.service.updateRestaurant(updatedRestaurant, () => {
-        alert('Restaurant updated successfully!');
         this.router.navigate(['/list-restaurants']);
       });
     }

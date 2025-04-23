@@ -20,6 +20,10 @@ export class AppComponent {
     this.router.navigate(['/list-foods']);
   }
 
+  createRestaurant() {
+    this.router.navigate(['/create']);
+  }
+
 
 
   constructor(private router: Router, private http: HttpClient) {}
