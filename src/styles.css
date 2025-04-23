@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-image: url('assets/images/FoodOnLaptop2.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.mainHeader{
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  margin: 0;
+}
+
+.navbarLink {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.navbar a,
+.navbar-brand,
+.navbar-toggler-icon {
+  color: white !important;
+}
+
+.navbar a:hover {
+  color: #cccccc !important;
+}
+
+.cardLayout {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: row;
+  padding: 1%;
+}
+
+.myCards {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 35%;
+  margin: 1%;
+  padding: 1%;
+  justify-items: center;
+}
