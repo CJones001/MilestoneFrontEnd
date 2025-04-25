@@ -29,13 +29,16 @@ export class ListFoodsComponent {
       this.service.getFullMenu((foods: Food[]) => {
         this.foods = foods;
         console.log("Fetched foods:", this.foods);
+
+        for (const food of this.foods) {
+          this.service.getRestaurant(food.restaurantId, (restaurant: Restaurant) => {
+            console.log("Fetched restaurant:", restaurant);
+            this.restaurantNames[food.restaurantId] = restaurant.name;
+          });
+        }
       });
-      for (const food of this.foods) {
-        this.service.getRestaurant(food.restaurantId, (restaurant: Restaurant) => {
-          this.restaurantNames[food.restaurantId] = restaurant.name;
-        });
-      }
-    };
+    }
+
   }
 
 

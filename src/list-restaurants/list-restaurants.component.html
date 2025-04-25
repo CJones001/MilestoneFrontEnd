@@ -1,5 +1,6 @@
-<div style="justify-content: center;">
-  <div *ngFor="let restaurant of restaurants">
-    <app-display-restaurant [restaurant]="restaurant"></app-display-restaurant>
-  </div>
+<div class="cardLayout">
+  <app-display-restaurant
+    *ngFor="let restaurant of restaurants"
+    [restaurant]="restaurant"
+  ></app-display-restaurant>
 </div>

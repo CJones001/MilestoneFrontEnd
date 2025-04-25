@@ -11,10 +11,8 @@
       <tr *ngFor="let food of foods">
         <td>{{ food.name }}</td>
         <td>{{ food.price }}</td>
-        <!-- Use the restaurantId to get the restaurant name from the restaurantNames object -->
         <td>{{ restaurantNames[food.restaurantId] }}</td>
       </tr>
     </tbody>
   </table>
 </div>
-

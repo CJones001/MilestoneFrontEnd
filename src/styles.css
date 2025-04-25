@@ -8,7 +8,7 @@ body {
 }
 
 .mainHeader{
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
   padding: 10px;
   text-align: center;
@@ -38,17 +38,24 @@ body {
 
 .cardLayout {
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   flex-direction: row;
-  padding: 1%;
+  padding: 10%;
+  gap: 5%;
+  justify-content: center;
 }
 
 .myCards {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, .8);
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  width: 35%;
+  width: 45%;
+  min-width: 500px;
+  max-width: 600px;
+  padding: 10%;
   margin: 1%;
-  padding: 1%;
   justify-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: large;
 }
